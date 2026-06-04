@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meraki | Carta Online</title>
+  <meta name="description" content="Carta online de Meraki para hamburguesas, perros, picadas y salchipapas." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Meraki carta online">
+      <span class="brand-mark">M</span>
+      <span>
+        <strong>Meraki</strong>
+        <small>Carta online</small>
+      </span>
+    </a>
+    <button class="cart-chip" id="cartChip" type="button" aria-live="polite">
+      <span id="cartCount">0</span>
+      <strong id="cartTotal">$0</strong>
+    </button>
+  </header>
+
+  <main class="layout">
+    <section class="menu-area" aria-label="Carta de Meraki">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Hamburguesas, perros y salchipapas</p>
+          <h1>Meraki</h1>
+          <p>Arma tu pedido y envialo por WhatsApp.</p>
+        </div>
+        <figure class="menu-shot">
+          <button id="menuZoomBtn" class="menu-zoom" type="button" aria-label="Ampliar imagen del menu">
+            <img src="assets/menu-meraki.jpeg" alt="Menu grafico de Meraki con hamburguesas y perros" />
+            <span>Ampliar carta</span>
+          </button>
+        </figure>
+      </div>
+
+      <div class="toolbar" aria-label="Filtros de carta">
+        <label class="search">
+          <span>Buscar</span>
+          <input id="searchInput" type="search" placeholder="Hamburguesa, perro, papa..." autocomplete="off" />
+        </label>
+        <nav class="tabs" id="categoryTabs" aria-label="Categorias"></nav>
+      </div>
+
+      <section class="notice">
+        <strong>Dato de carta:</strong>
+        todas las hamburguesas vienen acompanadas con papas.
+      </section>
+
+      <section class="product-grid" id="productGrid" aria-live="polite"></section>
+    </section>
+
+    <aside class="checkout" aria-label="Resumen del pedido">
+      <div class="checkout-head">
+        <div>
+          <p class="eyebrow">Pedido</p>
+          <h2>Tu carrito</h2>
+        </div>
+        <button id="closeCartBtn" class="checkout-close" type="button" aria-label="Cerrar carrito">Cerrar</button>
+      </div>
+      <div id="cartLines" class="cart-lines"></div>
+
+      <form id="orderForm" class="order-form">
+        <label>
+          Nombre
+          <input name="name" type="text" placeholder="Tu nombre" autocomplete="name" />
+        </label>
+        <label>
+          Celular
+          <input name="phone" type="tel" placeholder="Tu numero" autocomplete="tel" />
+        </label>
+        <label>
+          Entrega
+          <select name="delivery">
+            <option value="Domicilio">Domicilio</option>
+            <option value="Recoger">Recoger</option>
+          </select>
+        </label>
+        <label>
+          Direccion o indicaciones
+          <textarea name="address" rows="3" placeholder="Barrio, direccion, punto de referencia"></textarea>
+        </label>
+        <label>
+          Notas
+          <textarea name="notes" rows="3" placeholder="Salsas, sin cebolla, hora de entrega..."></textarea>
+        </label>
+
+        <div class="total-row">
+          <span>Total</span>
+          <strong id="checkoutTotal">$0</strong>
+        </div>
+
+        <button class="primary-btn" type="submit">Preparar pedido</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </aside>
+  </main>
+
+  <button id="cartBackdrop" class="cart-backdrop" type="button" aria-label="Cerrar carrito"></button>
+
+  <div class="mobile-summary">
+    <button id="mobileCartBtn" type="button">
+      <span>Ver pedido</span>
+      <strong id="mobileTotal">$0</strong>
+    </button>
+  </div>
+
+  <dialog id="orderDialog" class="dialog">
+    <h2>Pedido listo</h2>
+    <p id="dialogText"></p>
+    <textarea id="orderMessage" readonly rows="10" aria-label="Mensaje del pedido"></textarea>
+    <div class="dialog-actions">
+      <button id="copyOrderBtn" type="button">Copiar</button>
+      <a id="whatsappLink" class="primary-btn" href="#" target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
+      <button id="closeDialogBtn" type="button">Cerrar</button>
+    </div>
+  </dialog>
+
+  <dialog id="menuDialog" class="menu-dialog" aria-label="Menu ampliado">
+    <button id="closeMenuDialogBtn" class="menu-dialog-close" type="button" aria-label="Cerrar menu ampliado">Cerrar</button>
+    <img src="assets/menu-meraki.jpeg" alt="Menu grafico ampliado de Meraki" />
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
